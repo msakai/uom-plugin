@@ -1,6 +1,12 @@
 {-# LANGUAGE CPP #-}
 {-# LANGUAGE PatternSynonyms #-}
 
+#if __GLASGOW_HASKELL__ == 808
+-- Workaround for avoiding "mkPluginUsage: file not found" error.
+-- https://gitlab.haskell.org/ghc/ghc/issues/16093
+{-# OPTIONS_HADDOCK --optghc="-fobject-code" #-}
+#endif
+
 -- | This module defines a typechecker plugin that solves equations
 -- involving units of measure.  To use it, add
 --
